@@ -99,7 +99,6 @@ cloudSwitch() {
 }
   render() {
     const data = this.state.weather_data
-    const weather = this.state.weather_data.weather;
     return <div className="App">
     <div>
     <div className="weather-info">
