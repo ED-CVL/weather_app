@@ -1,13 +1,22 @@
-.cold{
+/*.cold{
   font-size: 2.5rem;
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 100%;
   background:blue;
 }
 
 .hot{
   font-size: 2.5rem;
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 100%;
   background:red;
+}*/
+
+.weather-scene{
+background-color: royalblue;
+width: 100%;
+height: 20rem;
+text-align: center;
+font-size: 2rem;
+font-weight: bold;
 }

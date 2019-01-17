@@ -13,7 +13,8 @@ class App extends Component {
     this.getWeatherData = this.getWeatherData.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearSearchCity = this.clearSearchCity.bind(this);
+    this.tempSwitch = this.tempSwitch.bind(this);
+    this.cloudSwitch = this.cloudSwitch.bind(this);
   }
 
   async getWeatherData() {
@@ -42,9 +43,7 @@ updateSearch(event){
   const self = this;
   self.setState({search_city: event.target.value});
 }
-clearSearchCity(){
-  this.setState({search_city: ''});
-}
+
  handleSubmit(event) {
     console.log(event);
     event.preventDefault();
@@ -60,6 +59,44 @@ clearSearchCity(){
   //  componentDidMount() {
   //   this.getWeatherData();
   // }
+
+  tempSwitch() {
+    const temp = this.state.weather_data.temp
+  switch(true) {
+    case (temp < 32):
+      return <div>Freezing!!</div>;
+    case (temp < 45):
+      return <div>Pretty cold dude!</div>;
+    case (temp < 60):
+      return <div>Light jacket perhaps?!</div>;
+    case (temp < 75):
+      return <div>Man oh man is it nice! Sweet!</div>;
+    case (temp < 90):
+      return <div>Time for some shorts!</div>;
+    case (temp > 90 ):
+      return <div>That's just too damn hot! AC time!</div>;
+    default:
+      return null;
+  }
+}
+
+cloudSwitch() {
+    const clouds = this.state.weather_data.clouds
+  switch(true) {
+    case (clouds < 10):
+      return <div>Look at all the sky!</div>;
+    case (clouds < 30):
+      return <div>A few clouds up there</div>;
+    case (clouds < 50):
+      return <div>Half clouds Half sky</div>;
+    case (clouds < 80):
+      return <div>That's a bunch of clouds!</div>;
+    case (clouds > 80):
+      return <div>Damn! So many clouds! No sky!</div>;
+    default:
+      return null;
+  }
+}
   render() {
     const data = this.state.weather_data
     const weather = this.state.weather_data.weather;
@@ -68,6 +105,7 @@ clearSearchCity(){
     <div className="weather-info">
     <p>City: {data.city}</p>
     <p>Temperature: {data.temp}</p>
+    <p>Clouds: {data.clouds}</p>
     <p>Weather: {data.weather}</p>
     <p>Description: {data.weather_description}</p>
 
@@ -86,10 +124,9 @@ clearSearchCity(){
       </form>
       </div>
       <div className="weather-scene">
+      {this.tempSwitch()}
+      {this.cloudSwitch()}
 
-      {
-      this.state.weather_data.temp < 45 ? <div className="cold">Damn that's cold. Bundle up!</div>:<div className="hot">Wow, soooo hotttt.</div>
-      }
       </div>
     </div>;
   }
