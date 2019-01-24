@@ -36,12 +36,15 @@ class App extends Component {
             weather_description: data.weather[0].description,
             wind_speed: data.wind.speed,
             clouds: data.clouds.all,
+            date: data.dt,
             sunrise: data.sys.sunrise,
             sunset: data.sys.sunset,
           },
         });
       });
   }
+
+
 updateSearch(event){
   const self = this;
   self.setState({search_city: event.target.value});
@@ -113,18 +116,42 @@ toggleSlide() {
   }
 }
   render() {
-    const data = this.state.weather_data;
+    const data = this.state.weather_data
     const { active_side } = this.state;
+
+    const formattedDate = new Date(data.date*1000).toLocaleDateString("en-US")
+    const formattedSunset = new Date(data.sunset*1000).toLocaleTimeString("en-US")
+    const formattedSunrise = new Date(data.sunrise*1000).toLocaleTimeString("en-US")
+
+    // Create a new JavaScript Date object based on the timestamp
+// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+// var date = new Date(data.time*1000);
+// Hours part from the timestamp
+// var hours = date.getHours();
+// // Minutes part from the timestamp
+// var minutes = "0" + date.getMinutes();
+// // Seconds part from the timestamp
+// var seconds = "0" + date.getSeconds();
+
+// // Will display time in 10:30:23 format
+// var formattedTime = hours + ':' + minutes.substr(-2);
+// console.log(formattedTime);
+
     return <div className="App">
-    <div>
     <button onClick={this.toggleSlide}>Toggle</button>
-    <div className="weather-info">
-      <p>City: {data.city}</p>
-      <p>Temperature: {data.temp}</p>
-      <p>Clouds: {data.clouds}</p>
-      <p>Weather: {data.weather}</p>
-      <p>Description: {data.weather_description}</p>
-    </div>
+    <div>
+    {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
+    <p>City: {data.city}</p>
+    <p>Date: {formattedDate}</p>
+    <p>Sunrise: EST {formattedSunrise}</p>
+    <p>Sunset: EST {formattedSunset}</p>
+    <p>Temperature: {data.temp}</p>
+    <p>Clouds: {data.clouds}</p>
+    <p>Weather: {data.weather}</p>
+    <p>Description: {data.weather_description}</p>
+
+    </div>}
+
     <form>
         <p>Find Weather</p>
         <div className="field">
