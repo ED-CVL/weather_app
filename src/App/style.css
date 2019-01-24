@@ -13,10 +13,14 @@
 }*/
 
 .weather-scene{
-background-color: royalblue;
-width: 100%;
-height: 20rem;
-text-align: center;
-font-size: 2rem;
-font-weight: bold;
+  background-color: royalblue;
+  width: 100%;
+  height: 20rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
 }

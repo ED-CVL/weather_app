@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import Search from '../Search';
 
 class App extends Component {
   constructor() {
@@ -7,6 +8,7 @@ class App extends Component {
     this.state = {
       weather_data: "",
       search_city: "",
+      active_side: false,
 
 
     };
@@ -15,6 +17,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.tempSwitch = this.tempSwitch.bind(this);
     this.cloudSwitch = this.cloudSwitch.bind(this);
+    this.toggleSlide = this.toggleSlide.bind(this);
   }
 
   async getWeatherData() {
@@ -97,17 +100,30 @@ cloudSwitch() {
       return null;
   }
 }
+
+toggleSlide() {
+  if(this.state.active_side === false){
+    this.setState({
+      active_side: true,
+    });
+  } else {
+    this.setState({
+      active_side: false,
+    })
+  }
+}
   render() {
-    const data = this.state.weather_data
+    const data = this.state.weather_data;
+    const { active_side } = this.state;
     return <div className="App">
     <div>
+    <button onClick={this.toggleSlide}>Toggle</button>
     <div className="weather-info">
-    <p>City: {data.city}</p>
-    <p>Temperature: {data.temp}</p>
-    <p>Clouds: {data.clouds}</p>
-    <p>Weather: {data.weather}</p>
-    <p>Description: {data.weather_description}</p>
-
+      <p>City: {data.city}</p>
+      <p>Temperature: {data.temp}</p>
+      <p>Clouds: {data.clouds}</p>
+      <p>Weather: {data.weather}</p>
+      <p>Description: {data.weather_description}</p>
     </div>
     <form>
         <p>Find Weather</p>
@@ -125,8 +141,8 @@ cloudSwitch() {
       <div className="weather-scene">
       {this.tempSwitch()}
       {this.cloudSwitch()}
-
       </div>
+      <Search toggle={this.toggleSlide} active={active_side}/>
     </div>;
   }
 }
