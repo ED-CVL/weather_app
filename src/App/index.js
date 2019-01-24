@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import Search from '../Search';
 
 class App extends Component {
   constructor() {
@@ -7,6 +8,7 @@ class App extends Component {
     this.state = {
       weather_data: "",
       search_city: "",
+      active_side: false,
 
 
     };
@@ -15,6 +17,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.tempSwitch = this.tempSwitch.bind(this);
     this.cloudSwitch = this.cloudSwitch.bind(this);
+    this.toggleSlide = this.toggleSlide.bind(this);
   }
 
   async getWeatherData() {
@@ -100,8 +103,21 @@ cloudSwitch() {
       return null;
   }
 }
+
+toggleSlide() {
+  if(this.state.active_side === false){
+    this.setState({
+      active_side: true,
+    });
+  } else {
+    this.setState({
+      active_side: false,
+    })
+  }
+}
   render() {
     const data = this.state.weather_data
+    const { active_side } = this.state;
 
     const formattedDate = new Date(data.date*1000).toLocaleDateString("en-US")
     const formattedSunset = new Date(data.sunset*1000).toLocaleTimeString("en-US")
@@ -122,6 +138,7 @@ cloudSwitch() {
 // console.log(formattedTime);
 
     return <div className="App">
+    <button onClick={this.toggleSlide}>Toggle</button>
     <div>
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
     <p>City: {data.city}</p>
@@ -151,8 +168,8 @@ cloudSwitch() {
       <div className="weather-scene">
       {this.tempSwitch()}
       {this.cloudSwitch()}
-
       </div>
+      <Search toggle={this.toggleSlide} active={active_side}/>
     </div>;
   }
 }
