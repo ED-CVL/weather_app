@@ -4,22 +4,65 @@ import 'bulma/css/bulma.css';
 import "./style.css";
 
 class Search extends Component {
+    constructor() {
+    super();
+    this.state = {
+      search_city: "",
+      search_zip:"",
+      search_country:"US"
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateState = this.updateState.bind(this);
+  }
+
+  updateState(event) {
+    // destructure the event
+    const { name, value } = event.target;
+
+    // set the state as needed
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleSubmit(event) {
+    console.log(event);
+    event.preventDefault();
+    const { getWeatherDataCity, getWeatherDataZip } = this.props;
+
+    // const { thing2, thing3, ...good } = this.state
+
+    if (this.state.search_city===""){
+      getWeatherDataZip(this.state.search_zip, this.state.search_country)
+    }
+    else{
+      getWeatherDataCity(this.state.search_city, this.state.search_country)
+    }
+
+
+    this.setState({search_city: '',
+                   search_zip:"",});
+    this.props.toggle();
+
+  }
+
   render() {
-    const { toggle, active } = this.props;
+    const { toggle, active} = this.props;
     return(
       <div className={active ? 'side-menu active' : 'side-menu'}>
-          <Field>
+          <Field onSubmit={this.handleSubmit}>
             <Label>City</Label>
             <Control>
-              <Input type="text" placeholder='eg. New York City'/>
+              <Input onChange={this.updateState} name="search_city" value={this.state.search_city} type="text" placeholder='eg. New York City'/>
             </Control>
             <Label>Zip</Label>
             <Control>
-              <Input type="text" placeholder='eg. New York City'/>
+              <Input onChange={this.updateState} name="search_zip" value={this.state.search_zip} type="text" placeholder='eg. New York City'/>
             </Control>
             <Label>Country</Label>
             <Control>
-                <Select>
+                <Select name="search_country" onChange={this.updateState}>
                   <option value="AF">Afghanistan</option>
                   <option value="AX">Åland Islands</option>
                   <option value="AL">Albania</option>
@@ -273,7 +316,7 @@ class Search extends Component {
             </Control>
             <br/>
             <Control className='submit-btn'>
-              <Button isColor='primary' onClick={toggle}>Submit</Button>
+              <Button isColor='primary' onClick={toggle} onClick={this.handleSubmit}>Submit</Button>
             </Control>
           </Field>
       </div>
