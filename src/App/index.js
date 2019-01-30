@@ -7,12 +7,12 @@ class App extends Component {
     super();
     this.state = {
       weather_data: "",
-      search_city: "",
       active_side: false,
 
 
     };
-    this.getWeatherData = this.getWeatherData.bind(this);
+    this.getWeatherDataCity = this.getWeatherDataCity.bind(this);
+    this.getWeatherDataZip = this.getWeatherDataZip.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.tempSwitch = this.tempSwitch.bind(this);
@@ -20,14 +20,38 @@ class App extends Component {
     this.toggleSlide = this.toggleSlide.bind(this);
   }
 
-  async getWeatherData() {
-    const city = this.state.search_city
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
+  async getWeatherDataCity(search_city, search_country) {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
     .then(response => response.json())
     .then((data) => {
         this.setState({
           weather_data: {
             city: data.name,
+            country: data.sys.country,
+            temp: data.main.temp,
+            temp_high: data.main.temp_max,
+            temp_low: data.main.temp_min,
+            humidity: data.main.humidity,
+            weather: data.weather[0].main,
+            weather_description: data.weather[0].description,
+            wind_speed: data.wind.speed,
+            clouds: data.clouds.all,
+            date: data.dt,
+            sunrise: data.sys.sunrise,
+            sunset: data.sys.sunset,
+          },
+        });
+      });
+  }
+
+  async getWeatherDataZip(search_zip, search_country) {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${search_zip},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
+    .then(response => response.json())
+    .then((data) => {
+        this.setState({
+          weather_data: {
+            city: data.name,
+            country: data.sys.country,
             temp: data.main.temp,
             temp_high: data.main.temp_max,
             temp_low: data.main.temp_min,
@@ -53,7 +77,7 @@ updateSearch(event){
  handleSubmit(event) {
     console.log(event);
     event.preventDefault();
-    this.getWeatherData();
+    this.getWeatherDataCity();
     this.setState({search_city: ''});
     // getWeatherData();
     // clearSearch();
@@ -142,6 +166,7 @@ toggleSlide() {
     <div>
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
     <p>City: {data.city}</p>
+
     <p>Date: {formattedDate}</p>
     <p>Sunrise: EST {formattedSunrise}</p>
     <p>Sunset: EST {formattedSunset}</p>
@@ -151,25 +176,12 @@ toggleSlide() {
     <p>Description: {data.weather_description}</p>
 
     </div>}
-
-    <form>
-        <p>Find Weather</p>
-        <div className="field">
-          <label className="label">City Name</label>
-          <div>
-            <input onChange={this.updateSearch} id="city_input" name="city" className="input" type="text" value={this.state.search_city} placeholder="eg. Chicago" />
-          </div>
-        </div>
-        <div>
-          <button type="submit" value="Submit" onClick={this.handleSubmit}>Submit</button>
-        </div>
-      </form>
       </div>
       <div className="weather-scene">
       {this.tempSwitch()}
       {this.cloudSwitch()}
       </div>
-      <Search toggle={this.toggleSlide} active={active_side}/>
+      <Search toggle={this.toggleSlide} active={active_side} getWeatherDataCity={this.getWeatherDataCity} getWeatherDataZip={this.getWeatherDataZip}/>
     </div>;
   }
 }
