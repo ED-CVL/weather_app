@@ -1,0 +1,12 @@
+#rain {
+  /*background: black;*/
+  width: 100vw;
+  height: 100vh;
+}
+
+.rain-drop {
+  background: #54bedb;
+  width: 10px;
+  height: 15px;
+  border-radius: 50%;
+}
