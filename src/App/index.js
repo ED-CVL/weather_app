@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "./style.css";
 import Search from '../Search';
+import ForecastTile from '../ForecastTile';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       weather_data: "",
+      weather_data_forecast: "",
       active_side: false,
 
 
@@ -42,6 +44,18 @@ class App extends Component {
           },
         });
       });
+      // 5 day forecast  api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
+
+      fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
+    .then(response => response.json())
+    .then((data) => {
+        this.setState({
+          weather_data_forecast: {
+            forecast: data.list
+          },
+        });
+      });
+
   }
 
   async getWeatherDataZip(search_zip, search_country) {
@@ -139,13 +153,17 @@ toggleSlide() {
     })
   }
 }
+
   render() {
     const data = this.state.weather_data
+    const forecast = this.state.weather_data_forecast
     const { active_side } = this.state;
 
     const formattedDate = new Date(data.date*1000).toLocaleDateString("en-US")
     const formattedSunset = new Date(data.sunset*1000).toLocaleTimeString("en-US")
     const formattedSunrise = new Date(data.sunrise*1000).toLocaleTimeString("en-US")
+
+  
 
     // Create a new JavaScript Date object based on the timestamp
 // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -177,9 +195,12 @@ toggleSlide() {
 
     </div>}
       </div>
-      <div className="weather-scene">
+      {/* <div className="weather-scene">
       {this.tempSwitch()}
       {this.cloudSwitch()}
+      </div> */}
+      <div className="forecast">
+      <ForecastTile forecast={forecast}/>
       </div>
       <Search toggle={this.toggleSlide} active={active_side} getWeatherDataCity={this.getWeatherDataCity} getWeatherDataZip={this.getWeatherDataZip}/>
     </div>;
