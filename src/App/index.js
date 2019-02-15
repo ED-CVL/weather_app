@@ -89,7 +89,6 @@ updateSearch(event){
 }
 
  handleSubmit(event) {
-    console.log(event);
     event.preventDefault();
     this.getWeatherDataCity();
     this.setState({search_city: ''});
