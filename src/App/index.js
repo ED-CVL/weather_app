@@ -25,7 +25,12 @@ class App extends Component {
 
   async getWeatherDataCity(search_city, search_country) {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
-    .then(response => response.json())
+    .then((response) => {
+      if(response.ok){
+      return response.json();
+    }else{
+      throw new Error(`Request rejected with status ${response.status}`)}
+    })
     .then((data) => {
         this.setState({
           weather_data: {
@@ -44,7 +49,7 @@ class App extends Component {
             sunset: data.sys.sunset,
           },
         });
-      });
+      }).catch((e)=> console.log(e));
       // 5 day forecast  api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
 
       fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
@@ -182,16 +187,21 @@ toggleSlide() {
     return <div className="App">
     <Nav/>
     <button onClick={this.toggleSlide}>Toggle</button>
+    
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
+    
+    <div>
     <p>City: {data.city}</p>
-
     <p>Date: {formattedDate}</p>
     <p>Sunrise: EST {formattedSunrise}</p>
     <p>Sunset: EST {formattedSunset}</p>
+    </div>
+    <div>
     <p>Temperature: {data.temp} °F</p>
-    <p>Clouds: {data.clouds}</p>
+    <p>Clouds: {data.clouds} %</p>
     <p>Weather: {data.weather}</p>
     <p>Description: {data.weather_description}</p>
+    </div>
 
     </div>}
     

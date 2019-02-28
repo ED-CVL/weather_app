@@ -1,18 +1,15 @@
-/*.cold{
-  font-size: 2.5rem;
-  height: 300px;
-  width: 100%;
-  background:blue;
-}
-
-.hot{
-  font-size: 2.5rem;
-  height: 300px;
-  width: 100%;
-  background:red;
-}*/
 html{
   scroll-behavior: smooth;
+}
+.weather-info{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 1.2rem;
+  color:black;
+}
+.weather-info div{
+  margin: 0 3rem;
 }
 .weather-scene{
   background-color: royalblue;
