@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import Nav from '../Nav';
 import Search from '../Search';
 import ForecastTile from '../ForecastTile';
 
@@ -179,21 +180,21 @@ toggleSlide() {
 // console.log(formattedTime);
 
     return <div className="App">
+    <Nav/>
     <button onClick={this.toggleSlide}>Toggle</button>
-    <div>
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
     <p>City: {data.city}</p>
 
     <p>Date: {formattedDate}</p>
     <p>Sunrise: EST {formattedSunrise}</p>
     <p>Sunset: EST {formattedSunset}</p>
-    <p>Temperature: {data.temp}</p>
+    <p>Temperature: {data.temp} °F</p>
     <p>Clouds: {data.clouds}</p>
     <p>Weather: {data.weather}</p>
     <p>Description: {data.weather_description}</p>
 
     </div>}
-      </div>
+    
       {/* <div className="weather-scene">
       {this.tempSwitch()}
       {this.cloudSwitch()}

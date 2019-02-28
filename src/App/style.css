@@ -11,7 +11,9 @@
   width: 100%;
   background:red;
 }*/
-
+html{
+  scroll-behavior: smooth;
+}
 .weather-scene{
   background-color: royalblue;
   width: 100%;
@@ -25,14 +27,3 @@ body {
   margin: 0;
 }
 
-.forecastTile{
- border: .1rem green solid;
- margin: 1rem;
- padding: 1rem;
-}
-
-.subTile{
-  border: .1rem pink solid;
-  margin: 1rem;
-  padding: 1rem;
- }
