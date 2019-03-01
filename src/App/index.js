@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       weather_data: "",
       weather_data_forecast: "",
-      active_side: false,
+      // active_side: false,
 
 
     };
@@ -20,7 +20,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.tempSwitch = this.tempSwitch.bind(this);
     this.cloudSwitch = this.cloudSwitch.bind(this);
-    this.toggleSlide = this.toggleSlide.bind(this);
+    // this.toggleSlide = this.toggleSlide.bind(this);
   }
 
   async getWeatherDataCity(search_city, search_country) {
@@ -147,22 +147,22 @@ cloudSwitch() {
   }
 }
 
-toggleSlide() {
-  if(this.state.active_side === false){
-    this.setState({
-      active_side: true,
-    });
-  } else {
-    this.setState({
-      active_side: false,
-    })
-  }
-}
+// toggleSlide() {
+//   if(this.state.active_side === false){
+//     this.setState({
+//       active_side: true,
+//     });
+//   } else {
+//     this.setState({
+//       active_side: false,
+//     })
+//   }
+// }
 
   render() {
     const data = this.state.weather_data
     const forecast = this.state.weather_data_forecast
-    const { active_side } = this.state;
+    // const { active_side } = this.state;
 
     const formattedDate = new Date(data.date*1000).toLocaleDateString("en-US")
     const formattedSunset = new Date(data.sunset*1000).toLocaleTimeString("en-US")
@@ -187,8 +187,11 @@ toggleSlide() {
     return <div className="App">
     <Nav/>
     
-    <button onClick={this.toggleSlide}>Toggle</button>
-    
+    {/* <button onClick={this.toggleSlide}>Toggle</button> */}
+    <div className="main-section">
+    <Search getWeatherDataCity={this.getWeatherDataCity} getWeatherDataZip={this.getWeatherDataZip}/>
+    <div className="weather-section">
+
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
     
     <div>
@@ -213,7 +216,8 @@ toggleSlide() {
       <div className="forecast">
       <ForecastTile forecast={forecast}/>
       </div>
-      <Search toggle={this.toggleSlide} active={active_side} getWeatherDataCity={this.getWeatherDataCity} getWeatherDataZip={this.getWeatherDataZip}/>
+      </div>
+</div>
     </div>;
   }
 }

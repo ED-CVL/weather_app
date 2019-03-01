@@ -46,7 +46,7 @@ class Search extends Component {
 
     this.setState({search_city: '',
                    search_zip:"",});
-    this.props.toggle();
+    // this.props.toggle();
 
   }
 
@@ -54,7 +54,8 @@ class Search extends Component {
 
     const { toggle, active} = this.props;
     return(
-      <div className={active ? 'side-menu active' : 'side-menu'}>
+      <div className="side-menu" >
+      <div className="search-heading">Check out the weather in ...</div>
           <Field onSubmit={this.handleSubmit}>
             <Label>City</Label>
             <Control>
@@ -320,7 +321,7 @@ class Search extends Component {
             </Control>
             <br/>
             <Control className='submit-btn'>
-              <Button isColor='primary' onClick={toggle} onClick={this.handleSubmit}>Submit</Button>
+              <Button isColor='primary'  onClick={this.handleSubmit}>Submit</Button>
             </Control>
           </Field>
       </div>

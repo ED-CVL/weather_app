@@ -40,22 +40,21 @@ class Nav extends Component {
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          More
+          Top Cities
         </a>
 
         <div class="navbar-dropdown">
           <a class="navbar-item">
-            About
+            New York City, NY 
           </a>
           <a class="navbar-item">
-            Jobs
+            Chicago, IL
           </a>
           <a class="navbar-item">
-            Contact
+            Miami, FL
           </a>
-          <hr class="navbar-divider"/>
           <a class="navbar-item">
-            Report an issue
+          Los Angeles, CA
           </a>
         </div>
       </div>

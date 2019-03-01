@@ -24,3 +24,12 @@ body {
   margin: 0;
 }
 
+.weather-section{
+width: 70%;
+}
+
+.main-section{
+  width: 100%;
+  display: flex;
+}
+
