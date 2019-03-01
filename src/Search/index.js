@@ -27,6 +27,9 @@ class Search extends Component {
   }
 
   handleSubmit(event) {
+    if(this.state.search_city==="" && this.state.search_zip===""){
+      return
+    }
     console.log(event);
     event.preventDefault();
     const { getWeatherDataCity, getWeatherDataZip } = this.props;
@@ -48,6 +51,7 @@ class Search extends Component {
   }
 
   render() {
+
     const { toggle, active} = this.props;
     return(
       <div className={active ? 'side-menu active' : 'side-menu'}>

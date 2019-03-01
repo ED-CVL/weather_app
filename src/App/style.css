@@ -1,17 +1,16 @@
-/*.cold{
-  font-size: 2.5rem;
-  height: 300px;
-  width: 100%;
-  background:blue;
+html{
+  scroll-behavior: smooth;
 }
-
-.hot{
-  font-size: 2.5rem;
-  height: 300px;
+.weather-info{
+  display: flex;
+  justify-content: center;
   width: 100%;
-  background:red;
-}*/
-
+  font-size: 1.2rem;
+  color:black;
+}
+.weather-info div{
+  margin: 0 3rem;
+}
 .weather-scene{
   background-color: royalblue;
   width: 100%;
@@ -25,14 +24,3 @@ body {
   margin: 0;
 }
 
-.forecastTile{
- border: .1rem green solid;
- margin: 1rem;
- padding: 1rem;
-}
-
-.subTile{
-  border: .1rem pink solid;
-  margin: 1rem;
-  padding: 1rem;
- }

@@ -31,13 +31,19 @@ class ForecastTile extends Component {
   }
 
   expand(arr) {
+ 
     const timeMap = arr.map((time, i) => {
       return (
         <div className="subTile">
-          <p>Date:{time.dt_txt.slice(5, 10)}</p>
-          {/* <p>Time:{time.dt_txt.slice(11, 16)}</p> */}
+        <div className="subTile-date"> 
+          <p>Date: {time.dt_txt.slice(5, 10)}</p>
+          <p>Time: {time.dt_txt.slice(11, 16)}</p>
+        </div>
+        <div className="subTile-description">
+        <p>Temperature: {time.main.temp} °F</p>
           {/* <p>{time.weather[0].main}</p> */}
           <p>{time.weather[0].description}</p>
+        </div>
         </div>
       );
     });
@@ -56,21 +62,24 @@ class ForecastTile extends Component {
     const chunkedArr = this.chunk();
     const fiveDayForecast = chunkedArr.map((day, i) => {
       return (
+        <a href={`#${i}`}>
         <div
           onClick={e => this.toggleExpand({ i })}
           key={i}
+          id={i}
           day={day}
           className="forecastTile"
         >
           <p>Date:{day[0].dt_txt.slice(5, 10)}</p>
-          {/* <p>Time:{day[0].dt_txt.slice(11, 16)}</p> */}
-          {/* <p>{day[0].weather[0].main}</p> */}
+          <p>{day[0].main.temp} °F</p>
           <p>{day[0].weather[0].description}</p>
+  
           {/* {this.state.expanded === true ? this.expand(day) : ""} */}
           {this.state.expanded === true && this.state.expandedKey.i === i
             ? this.expand(day)
             : ""}
         </div>
+        </a>
       );
     });
     return (
