@@ -186,6 +186,7 @@ toggleSlide() {
 
     return <div className="App">
     <Nav/>
+    
     <button onClick={this.toggleSlide}>Toggle</button>
     
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
