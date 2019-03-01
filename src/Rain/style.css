@@ -2,6 +2,10 @@
   /*background: black;*/
   width: 100vw;
   height: 100vh;
+  /*display: flex;*/
+  position: relative;
+  overflow: hidden;
+  /*justify-content: space-between;*/
 }
 
 .rain-drop {
@@ -9,4 +13,39 @@
   width: 10px;
   height: 15px;
   border-radius: 50%;
+  position: absolute;
+  opacity: .8;
+}
+
+.base {
+  width: 300px;
+  height: 150px;
+  top: -35px;
+}
+
+.cloud {
+  background: gray;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.bottom-left {
+  width: 150px;
+  height: 100px;
+  top: 60px;
+  left: -10px;
+}
+
+.bottom-right {
+  width: 200px;
+  height: 100px;
+  top: 60px;
+  left: 130px;
+}
+
+.bottom-center {
+  width: 100px;
+  height: 100px;
+  top: 60px;
+  left: 100px;
 }
