@@ -10,12 +10,8 @@ function rainDrop(key, startPostion, randomDelay) {
   return <div className={'rain-drop'} key={'rain-drop'+key} style={styles}/>
 }
 
-function topCloud() {
-  return  (<div className='cloud base'>
-            <div className='cloud bottom-left'/>
-            <div className='cloud bottom-right'/>
-            <div className='cloud bottom-center'/>
-          </div>)
+function cloud(number) {
+  return <div className={'cloud cloud' + number} />
 }
 
 class Rain extends Component {
@@ -71,14 +67,6 @@ class Rain extends Component {
       delay: anime.stagger(100),
       loop: true,
     });
-    anime({
-      targets: '.cloud.base',
-      translateX: ['0%', '-100%'],
-      left: [anime.stagger(250), anime.stagger(250)],
-      easing: 'linear',
-      duration: 20000,
-      loop: true,
-    })
   }
 
   render() {
@@ -88,13 +76,9 @@ class Rain extends Component {
         {this.rainLevel('light')}
         {createRainCount.map( i => rainDrop(i, this.random(0,90), this.random(0,1500)))}
         <div id='clouds'>
-          {topCloud()}
-          {topCloud()}
-          {topCloud()}
-          {topCloud()}
-          {topCloud()}
-          {topCloud()}
-          {topCloud()}
+          {cloud(1)}
+          {cloud(2)}
+          {cloud(3)}
         </div>
       </div>
     )

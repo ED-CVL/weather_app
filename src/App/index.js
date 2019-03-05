@@ -6,6 +6,7 @@ import { faSun, faCloudShowersHeavy, faSnowflake, faWind, faCloud, faCloudSun } 
 import Nav from '../Nav';
 import Search from '../Search';
 import ForecastTile from '../ForecastTile';
+import Rain from '../Rain';
 
 library.add(faSun,faCloudShowersHeavy, faSnowflake, faWind, faCloud, faCloudSun);
 class App extends Component {
@@ -175,14 +176,14 @@ cloudSwitch() {
 
     return <div className="App">
     <Nav getWeatherDataCity={this.getWeatherDataCity}/>
-    
+
     {/* <button onClick={this.toggleSlide}>Toggle</button> */}
     <div className="main-section">
     <Search getWeatherDataCity={this.getWeatherDataCity} getWeatherDataZip={this.getWeatherDataZip}/>
     <div className="weather-section">
 
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
-    
+
     <p className="sunrise-time">Sunrise: {formattedSunrise.slice(0,4) +" "+ formattedSunset.slice(8,10)} EST</p>
     <div className="weather-info-middle">
     <p className="city-name">{data.city}</p>
@@ -193,7 +194,7 @@ cloudSwitch() {
 
 
     </div>}
-    
+
       {/* <div className="weather-scene">
       {this.tempSwitch()}
       {this.cloudSwitch()}
@@ -203,6 +204,7 @@ cloudSwitch() {
       </div>
       </div>
 </div>
+      <Rain/>
     </div>;
   }
 }
