@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import "./style.css";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faCloudShowersHeavy, faSnowflake, faWind, faCloud, faCloudSun, faBolt } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSun,faCloudShowersHeavy, faSnowflake, faWind, faCloud, faCloudSun, faBolt);
 
 class ForecastTile extends Component {
   constructor(props) {
@@ -15,11 +20,11 @@ class ForecastTile extends Component {
   }
 
   chunk() {
-    //Sliced the array bc first 2 were for the current day. Wanted the next day for 5 day
+    //Sliced the array bc first 1 were for the current day. Wanted the next day for 5 day
     const forecast =
       this.props.forecast.length < 1
         ? ""
-        : this.props.forecast.forecast.slice(2);
+        : this.props.forecast.forecast.slice(1);
     const chunked = [];
 
     for (let element of forecast) {
@@ -34,11 +39,31 @@ class ForecastTile extends Component {
   expand(arr) {
  
     const timeMap = arr.map((time, i) => {
+      let icon = ()=> {
+        let desc = time.weather[0].description
+        switch(true) {
+        case (desc.includes("overcast")|| desc.includes("scattered")):
+          return <FontAwesomeIcon className="overcast-icon" icon="cloud-sun"/>;
+        case (desc.includes("clear")):
+          return <FontAwesomeIcon className="sunny-icon" icon="sun"/>;
+        case (desc.includes("rain")):
+          return <FontAwesomeIcon className="rain-icon" icon="cloud-showers-heavy"/>;
+        case (desc.includes("snow")):
+          return <FontAwesomeIcon className="snow-icon" icon="snowflake"/>;
+        case (desc.includes("cloud")):
+          return <FontAwesomeIcon className="clouds-icon" icon="cloud"/>;
+        case (desc.includes("thunder")):
+          return <FontAwesomeIcon className="thunder-icon" icon="bolt"/>;
+        default:
+          return null;
+      }}
+
       return (
         <div className="subTile">
-          <p>Date: {time.dt_txt.slice(5, 10)}</p>
-          <p>Time: {time.dt_txt.slice(11, 16)}</p>
-          <p>Temperature: {time.main.temp} °F</p>
+          {/* <p>Date: {time.dt_txt.slice(5, 10)}</p> */}
+          <p>{time.dt_txt.slice(11, 16)}</p>
+          <p>{icon()}</p>
+          <p>{Math.floor(time.main.temp)} °F</p>
           {/* <p>{time.weather[0].main}</p> */}
           <p>{time.weather[0].description}</p>
         </div>
@@ -67,7 +92,7 @@ class ForecastTile extends Component {
           day={day}
           className="forecastTile"
         >
-          <p>Date:{day[0].dt_txt.slice(5, 10)}</p>
+          <p className="date">Date:{day[0].dt_txt.slice(5, 10)}</p>
           {/* <p>{day[0].main.temp} °F</p> */}
           {/* <p>{day[0].weather[0].description}</p> */}
   
