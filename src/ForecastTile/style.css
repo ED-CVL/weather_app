@@ -6,6 +6,9 @@
   color:black;
 }
 .forecastTile {
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
   width: 70%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
   color: black;
@@ -20,12 +23,35 @@
   width: 80%;
   font-size: 1rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   color: black;
   font-weight: 700;
   background-color: seagreen;
   border: 0.1rem black solid;
-  margin: 1rem auto;
+  margin: 1rem .3rem;
   padding: 1rem;
+}
+
+.subTile p {
+  text-align: center;
+}
+.overcast-icon{
+
+}
+.sunny-icon{
+  color:yellow;
+}
+.rain-icon{
+  color:blue;
+}
+.snow-icon{
+  color:white;
+}
+.clouds-icon{
+  color:darkgray;
+}
+.thunder-icon{
+  color:yellow;
 }
 
