@@ -3,6 +3,7 @@ import "./style.css";
 import Nav from '../Nav';
 import Search from '../Search';
 import ForecastTile from '../ForecastTile';
+import Rain from '../Rain';
 
 class App extends Component {
   constructor() {
@@ -170,14 +171,14 @@ cloudSwitch() {
 
     return <div className="App">
     <Nav getWeatherDataCity={this.getWeatherDataCity}/>
-    
+
     {/* <button onClick={this.toggleSlide}>Toggle</button> */}
     <div className="main-section">
     <Search getWeatherDataCity={this.getWeatherDataCity} getWeatherDataZip={this.getWeatherDataZip}/>
     <div className="weather-section">
 
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
-    
+
     <div>
     <p>City: {data.city}</p>
     <p>Date: {formattedDate}</p>
@@ -192,7 +193,7 @@ cloudSwitch() {
     </div>
 
     </div>}
-    
+
       {/* <div className="weather-scene">
       {this.tempSwitch()}
       {this.cloudSwitch()}
@@ -202,6 +203,7 @@ cloudSwitch() {
       </div>
       </div>
 </div>
+      <Rain/>
     </div>;
   }
 }

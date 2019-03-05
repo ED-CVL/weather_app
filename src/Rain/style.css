@@ -3,7 +3,8 @@
   width: 100vw;
   height: 100vh;
   /*display: flex;*/
-  position: relative;
+  position: absolute;
+  top: 5%;
   overflow: hidden;
   /*justify-content: space-between;*/
 }
@@ -25,27 +26,91 @@
 
 .cloud {
   background: gray;
-  border-radius: 50%;
+  width: 350px;
+  height: 125px;
+  border-radius: 100px;
   position: absolute;
+  margin-top: 100px;
+  z-index: 2;
+  animation: clouds 15s linear infinite;
 }
 
-.bottom-left {
-  width: 150px;
-  height: 100px;
-  top: 60px;
-  left: -10px;
+.cloud2 {
+  animation: clouds 15s linear 5s infinite;
+}
+.cloud3 {
+  animation: clouds 15s linear 10s infinite;
 }
 
-.bottom-right {
-  width: 200px;
-  height: 100px;
-  top: 60px;
-  left: 130px;
-}
-
-.bottom-center {
+.cloud::after {
+  content: '';
+  background: gray;
   width: 100px;
   height: 100px;
-  top: 60px;
-  left: 100px;
+  position: absolute;
+  border-radius: 50%;
+  top: -30%;
+  left: 15%;
+}
+
+.cloud::before {
+  content: '';
+  background: gray;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  border-radius: 50%;
+  top: -60%;
+  left: 35%;
+}
+
+.sun {
+  background: yellow;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0px 0px 100px 10px yellow;
+  top: -10%;
+  left: 30%;
+}
+
+.sun::before {
+  content: '';
+  background: orange;
+  width: 275px;
+  height: 275px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.8;
+  box-shadow: 0px 0px 100px 10px orange;
+}
+.sun::after {
+  content: '';
+  background: #ffb732;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -2;
+  box-shadow: 0px 0px 100px 10px #ffb732;
+  animation: shine 5s linear infinite;
+}
+
+
+@keyframes shine {
+  50% {
+      box-shadow: 0px 0px 50px 40px orange;
+  }
+}
+
+@keyframes clouds {
+  from {
+    transform: translateX(100vw);
+  }
+
+  to {
+    transform: translateX(0vw);
+  }
 }
