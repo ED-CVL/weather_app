@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import "./style.css";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faCloudShowersHeavy, faSnowflake, faWind, faCloud, faCloudSun } from '@fortawesome/free-solid-svg-icons';
 import Nav from '../Nav';
 import Search from '../Search';
 import ForecastTile from '../ForecastTile';
 
+library.add(faSun,faCloudShowersHeavy, faSnowflake, faWind, faCloud, faCloudSun);
 class App extends Component {
   constructor() {
     super();
@@ -26,10 +30,11 @@ class App extends Component {
   async getWeatherDataCity(search_city, search_country) {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
     .then((response) => {
-      if(response.ok){
-      return response.json();
+      if(!response.ok){
+        throw new Error(`Request rejected with status ${response.status}`)
     }else{
-      throw new Error(`Request rejected with status ${response.status}`)}
+      return response.json();
+    }
     })
     .then((data) => {
         this.setState({
@@ -178,18 +183,14 @@ cloudSwitch() {
 
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
     
-    <div>
-    <p>City: {data.city}</p>
-    <p>Date: {formattedDate}</p>
-    <p>Sunrise: EST {formattedSunrise}</p>
-    <p>Sunset: EST {formattedSunset}</p>
+    <p className="sunrise-time">Sunrise: {formattedSunrise.slice(0,4) +" "+ formattedSunset.slice(8,10)} EST</p>
+    <div className="weather-info-middle">
+    <p className="city-name">{data.city}</p>
+    <p>{data.weather_description[0].toUpperCase() + data.weather_description.slice(1)}</p>
+    <p className="current-temp">{Math.round(data.temp)} °F</p>
     </div>
-    <div>
-    <p>Temperature: {data.temp} °F</p>
-    <p>Clouds: {data.clouds} %</p>
-    <p>Weather: {data.weather}</p>
-    <p>Description: {data.weather_description}</p>
-    </div>
+    <p className="sunset-time">Sunset: {formattedSunset.slice(0,4) + formattedSunset.slice(8,10)} EST</p>
+
 
     </div>}
     
