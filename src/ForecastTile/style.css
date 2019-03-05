@@ -1,22 +1,31 @@
+
+.forecast-heading{
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  color:black;
+}
 .forecastTile {
+  width: 70%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
   color: black;
   font-weight: 700;
   background-color: lightseagreen;
   border: 0.1rem black solid;
-  margin: 1rem;
+  margin: 0 auto 1rem auto;
   padding: 1rem;
 }
 
 .subTile {
+  width: 80%;
   font-size: 1rem;
   display: flex;
-  justify-content: space-around;
-  align-content: center;
+  justify-content: space-between;
   color: black;
   font-weight: 700;
   background-color: seagreen;
   border: 0.1rem black solid;
-  margin: 1rem;
+  margin: 1rem auto;
   padding: 1rem;
 }
+

@@ -15,10 +15,11 @@ class ForecastTile extends Component {
   }
 
   chunk() {
+    //Sliced the array bc first 2 were for the current day. Wanted the next day for 5 day
     const forecast =
       this.props.forecast.length < 1
         ? ""
-        : this.props.forecast.forecast;
+        : this.props.forecast.forecast.slice(2);
     const chunked = [];
 
     for (let element of forecast) {
@@ -35,15 +36,11 @@ class ForecastTile extends Component {
     const timeMap = arr.map((time, i) => {
       return (
         <div className="subTile">
-        <div className="subTile-date"> 
           <p>Date: {time.dt_txt.slice(5, 10)}</p>
           <p>Time: {time.dt_txt.slice(11, 16)}</p>
-        </div>
-        <div className="subTile-description">
-        <p>Temperature: {time.main.temp} °F</p>
+          <p>Temperature: {time.main.temp} °F</p>
           {/* <p>{time.weather[0].main}</p> */}
           <p>{time.weather[0].description}</p>
-        </div>
         </div>
       );
     });
@@ -71,8 +68,8 @@ class ForecastTile extends Component {
           className="forecastTile"
         >
           <p>Date:{day[0].dt_txt.slice(5, 10)}</p>
-          <p>{day[0].main.temp} °F</p>
-          <p>{day[0].weather[0].description}</p>
+          {/* <p>{day[0].main.temp} °F</p> */}
+          {/* <p>{day[0].weather[0].description}</p> */}
   
           {/* {this.state.expanded === true ? this.expand(day) : ""} */}
           {this.state.expanded === true && this.state.expandedKey.i === i
@@ -84,6 +81,7 @@ class ForecastTile extends Component {
     });
     return (
       <div className="fiveDayForecast">
+      {this.props.forecast ? <h1 className="forecast-heading">5 Day Forecast</h1> : ""}
         {fiveDayForecast}
       </div>
     );
