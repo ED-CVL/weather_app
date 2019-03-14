@@ -55,7 +55,7 @@ class Search extends Component {
     const { toggle, active} = this.props;
     return(
       <div className="side-menu" >
-      <div className="search-heading">Check out the weather in ...</div>
+      {/* <div className="search-heading">Check out the weather in ...</div> */}
           <Field onSubmit={this.handleSubmit}>
             <Label>City</Label>
             <Control>
@@ -63,7 +63,7 @@ class Search extends Component {
             </Control>
             <Label>Zip</Label>
             <Control>
-              <Input onChange={this.updateState} name="search_zip" value={this.state.search_zip} type="text" placeholder='eg. New York City'/>
+              <Input onChange={this.updateState} name="search_zip" value={this.state.search_zip} type="text" placeholder='eg. 10013'/>
             </Control>
             <Label>Country</Label>
             <Control>
@@ -321,7 +321,7 @@ class Search extends Component {
             </Control>
             <br/>
             <Control className='submit-btn'>
-              <Button isColor='primary'  onClick={this.handleSubmit}>Submit</Button>
+              <Button isColor='link'  onClick={this.handleSubmit}>Submit</Button>
             </Control>
           </Field>
       </div>

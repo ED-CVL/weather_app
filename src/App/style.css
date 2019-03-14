@@ -20,7 +20,8 @@ text-align: center;
   font-size: 2rem;
 }
 .current-temp{
-  font-size: 3rem;
+  color:black;
+  font-size: 4rem;
 }
 .sunrise-time{
 align-self: flex-end;

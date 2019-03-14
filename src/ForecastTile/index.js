@@ -24,7 +24,7 @@ class ForecastTile extends Component {
     const forecast =
       this.props.forecast.length < 1
         ? ""
-        : this.props.forecast.forecast.slice(2);
+        : this.props.forecast.forecast.slice(1);
     const chunked = [];
 
     for (let element of forecast) {

@@ -14,7 +14,7 @@ class Nav extends Component {
 
   render() {
     return (
-        <nav className="navbar is-info" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-link" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item" href="https://bulma.io">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
@@ -61,19 +61,6 @@ class Nav extends Component {
           <p onClick={() => this.props.getWeatherDataCity("Nashville", "US")} className="navbar-item">
           Nashville, TN
           </p>
-        </div>
-      </div>
-    </div>
-
-    <div className="navbar-end">
-      <div className="navbar-item">
-        <div className="buttons">
-          <a className="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a className="button is-light">
-            Log in
-          </a>
         </div>
       </div>
     </div>
