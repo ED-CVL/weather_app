@@ -1,7 +1,7 @@
-.navbar-item{
-    cursor: pointer;
+.navbar-item {
+  cursor: pointer;
 }
 
-.navbar-item:hover{
-background-color: #DCDCDC;
+.navbar-item:hover {
+  background-color: #DCDCDC;
 }
