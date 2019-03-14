@@ -13,8 +13,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
   color: black;
   font-weight: 700;
-  background-color: lightseagreen;
-  border: 0.1rem black solid;
+  /*background-color: rgba(0,0,0,0.6);*/
+  /*border: 0.1rem black solid;*/
   margin: 0 auto 1rem auto;
   padding: 1rem;
 }
@@ -27,8 +27,8 @@
   justify-content: center;
   color: black;
   font-weight: 700;
-  background-color: seagreen;
-  border: 0.1rem black solid;
+  /*background-color: rgba(255,255,255,0.6);*/
+  /*border: 0.1rem black solid;*/
   margin: 1rem .3rem;
   padding: 1rem;
 }
@@ -37,21 +37,21 @@
   text-align: center;
 }
 .overcast-icon{
-
+  color: black;
 }
 .sunny-icon{
-  color:yellow;
+  color: black;
 }
 .rain-icon{
-  color:blue;
+  color: black;
 }
 .snow-icon{
-  color:white;
+  color: black;
 }
 .clouds-icon{
-  color:darkgray;
+  color: black;
 }
 .thunder-icon{
-  color:yellow;
+  color: black;
 }
 

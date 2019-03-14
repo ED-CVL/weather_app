@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import 'bulma/css/bulma.css';
 import "./style.css";
+import Logo from '../Logo';
 
 class Nav extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class Nav extends Component {
 
         <div className="navbar-dropdown">
           <p onClick={() => this.props.getWeatherDataCity("New York", "US")} className="navbar-item">
-            New York City, NY 
+            New York City, NY
           </p>
           <p onClick={() => this.props.getWeatherDataCity("Chicago", "US")} className="navbar-item">
             Chicago, IL

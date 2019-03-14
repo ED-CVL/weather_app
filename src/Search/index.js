@@ -321,7 +321,7 @@ class Search extends Component {
             </Control>
             <br/>
             <Control className='submit-btn'>
-              <Button isColor='link'  onClick={this.handleSubmit}>Submit</Button>
+              <Button isColor='link' onClick={this.handleSubmit}>Submit</Button>
             </Control>
           </Field>
       </div>

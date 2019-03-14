@@ -7,6 +7,7 @@ import Nav from '../Nav';
 import Search from '../Search';
 import ForecastTile from '../ForecastTile';
 import Rain from '../Rain';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 library.add(faSun,faCloudShowersHeavy, faSnowflake, faWind, faCloud, faCloudSun);
 class App extends Component {
@@ -181,18 +182,15 @@ cloudSwitch() {
     <div className="main-section">
     <Search getWeatherDataCity={this.getWeatherDataCity} getWeatherDataZip={this.getWeatherDataZip}/>
     <div className="weather-section">
-
-    {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
-
-    <p className="sunrise-time"><strong>Sunrise: </strong>{formattedSunrise.slice(0,4) +" "+ formattedSunset.slice(8,10)} EST</p>
-    <div className="weather-info-middle">
-    <p className="city-name">{data.city}</p>
-    <p>{data.weather_description[0].toUpperCase() + data.weather_description.slice(1)}</p>
-    <p className="current-temp">{Math.round(data.temp)} °F</p>
-    </div>
-    <p className="sunset-time"><strong>Sunset: </strong>{formattedSunset.slice(0,4) + formattedSunset.slice(8,10)} EST</p>
-
-
+    {this.state.weather_data.length < 1 ? '' :
+    <div className="weather-info">
+      <p className="sunrise-time"><strong>Sunrise: </strong>{formattedSunrise.slice(0,4) +" "+ formattedSunset.slice(8,10)} EST</p>
+      <div className="weather-info-middle">
+        <p className="city-name">{data.city}</p>
+        <p>{data.weather_description[0].toUpperCase() + data.weather_description.slice(1)}</p>
+        <p className="current-temp">{Math.round(data.temp)} °F</p>
+      </div>
+      <p className="sunset-time"><strong>Sunset: </strong>{formattedSunset.slice(0,4) + formattedSunset.slice(8,10)} EST</p>
     </div>}
 
       {/* <div className="weather-scene">
@@ -204,7 +202,7 @@ cloudSwitch() {
       </div>
       </div>
 </div>
-      {/* <Rain/> */}
+      <Rain/>
     </div>;
   }
 }

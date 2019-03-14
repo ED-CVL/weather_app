@@ -1,5 +1,5 @@
 .side-menu {
-  background: #ffa500;
+  background: #1e0044;
   width: 30%;
   height: 100vh;
   top: 0;
@@ -27,15 +27,19 @@ margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width:90%;
+  color: black !important;
 }
 
 .submit-btn {
   align-self: center;
 }
 
-.field{
-  width:90%;
+.input::placeholder {
+  color: black !important;
 }
+
 .label {
 font-size: 1.3rem !important;
+color: white !important;
 }

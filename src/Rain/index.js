@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './style.css';
 import anime from 'animejs';
-import { CSSTransitionGroup } from 'react-transition-group'
+import { CSSTransitionGroup } from 'react-transition-group';
 
 function rainDrop(key, startPostion, randomDelay) {
   const styles = {
@@ -48,7 +48,7 @@ class Rain extends Component {
       transitionEnter={false}
       transitionLeave={false}>
         <video autoPlay muted loop className="video">
-          <source src={this.renderVideo("snow")} type="video/mp4"/>
+          <source src={this.renderVideo("clouds")} type="video/mp4"/>
         </video>
       </CSSTransitionGroup>
       </div>

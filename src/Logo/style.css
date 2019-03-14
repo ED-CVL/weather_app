@@ -1,0 +1,18 @@
+.sun-class,.text-class {
+  fill:#eea024;
+}
+
+.sun-class {
+  fill-rule:evenodd;
+}
+
+.text-class {
+  font-size:125px;
+  font-family:HelveticaNeueLTPro-Blk;
+  font-weight:800;
+}
+
+#weather-logo {
+/*  width: 200px;
+  height: 50px;*/
+}

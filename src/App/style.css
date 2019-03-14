@@ -8,26 +8,36 @@ html {
   width: 100%;
   font-size: 1.2rem;
   color:black;
+  background: rgba(0,0,0,0.4);
+  margin-top: 0;
 }
 .weather-info div {
   margin: 0 3rem;
 }
 
 .weather-info-middle p {
+  color: white;
 text-align: center;
 }
 .city-name {
+  color: white;
   font-size: 2rem;
 }
 .current-temp{
-  color:black;
+  color: white;
   font-size: 4rem;
 }
 .sunrise-time {
 align-self: flex-end;
+color: white;
+}
+
+.sunrise-time strong, .sunset-time strong {
+  color: white;
 }
 .sunset-time {
   align-self: flex-end;
+  color: white;
 }
 .weather-scene {
   background-color: royalblue;
