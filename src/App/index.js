@@ -184,13 +184,13 @@ cloudSwitch() {
 
     {this.state.weather_data.length < 1 ? '' : <div className="weather-info">
 
-    <p className="sunrise-time">Sunrise: {formattedSunrise.slice(0,4) +" "+ formattedSunset.slice(8,10)} EST</p>
+    <p className="sunrise-time"><strong>Sunrise: </strong>{formattedSunrise.slice(0,4) +" "+ formattedSunset.slice(8,10)} EST</p>
     <div className="weather-info-middle">
     <p className="city-name">{data.city}</p>
     <p>{data.weather_description[0].toUpperCase() + data.weather_description.slice(1)}</p>
     <p className="current-temp">{Math.round(data.temp)} °F</p>
     </div>
-    <p className="sunset-time">Sunset: {formattedSunset.slice(0,4) + formattedSunset.slice(8,10)} EST</p>
+    <p className="sunset-time"><strong>Sunset: </strong>{formattedSunset.slice(0,4) + formattedSunset.slice(8,10)} EST</p>
 
 
     </div>}
@@ -204,7 +204,7 @@ cloudSwitch() {
       </div>
       </div>
 </div>
-      <Rain/>
+      {/* <Rain/> */}
     </div>;
   }
 }

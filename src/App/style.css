@@ -19,8 +19,9 @@ text-align: center;
 .city-name {
   font-size: 2rem;
 }
-.current-temp {
-  font-size: 3rem;
+.current-temp{
+  color:black;
+  font-size: 4rem;
 }
 .sunrise-time {
 align-self: flex-end;
