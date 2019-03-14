@@ -24,7 +24,7 @@ class ForecastTile extends Component {
     const forecast =
       this.props.forecast.length < 1
         ? ""
-        : this.props.forecast.forecast.slice(1);
+        : this.props.forecast.forecast.slice(2);
     const chunked = [];
 
     for (let element of forecast) {
@@ -58,10 +58,27 @@ class ForecastTile extends Component {
           return null;
       }}
 
+      let clockTime = ()=>{
+      const clockTime2Digit = time.dt_txt.slice(11, 16);
+      const hour = time.dt_txt.slice(11, 13);
+      switch(true){
+        case (clockTime2Digit === "00:00"):
+          return "12:00 am";
+        case (clockTime2Digit === "12:00"):
+          return "12:00 pm";
+        case (hour > 12):
+          return `${hour - 12}:00 pm`;
+        case (hour < 12):
+          return `${clockTime2Digit} am`;
+        default:
+          return clockTime;
+      }};
+      
       return (
+        
         <div className="subTile">
           {/* <p>Date: {time.dt_txt.slice(5, 10)}</p> */}
-          <p>{time.dt_txt.slice(11, 16)}</p>
+          <p>{clockTime()}</p>
           <p>{icon()}</p>
           <p>{Math.floor(time.main.temp)} °F</p>
           {/* <p>{time.weather[0].main}</p> */}

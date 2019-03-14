@@ -204,7 +204,7 @@ cloudSwitch() {
       </div>
       </div>
 </div>
-      <Rain/>
+      {/* <Rain/> */}
     </div>;
   }
 }
