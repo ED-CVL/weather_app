@@ -3,6 +3,7 @@ import { Field, Label, Control, Input, Select, Button } from 'bloomer';
 import 'bulma/css/bulma.css';
 import "./style.css";
 
+
 class Search extends Component {
     constructor() {
     super();
@@ -26,11 +27,14 @@ class Search extends Component {
     });
   }
 
+
   handleSubmit(event) {
     if(this.state.search_city==="" && this.state.search_zip===""){
       return
     }
-    console.log(event);
+
+    // this.checkCity(this.state.search_city);
+    // console.log(event);
     event.preventDefault();
     const { getWeatherDataCity, getWeatherDataZip } = this.props;
 
@@ -50,8 +54,8 @@ class Search extends Component {
 
   }
 
-  render() {
 
+  render() {
     const { toggle, active} = this.props;
     return(
       <div className="side-menu" >
@@ -59,7 +63,7 @@ class Search extends Component {
           <Field onSubmit={this.handleSubmit}>
             <Label>City</Label>
             <Control>
-              <Input onChange={this.updateState} name="search_city" value={this.state.search_city} type="text" placeholder='eg. New York City'/>
+              <Input onChange={this.updateState} name="search_city" value={this.state.search_city} type="text" placeholder='eg. New York'/>
             </Control>
             <Label>Zip</Label>
             <Control>

@@ -202,7 +202,7 @@ cloudSwitch() {
       </div>
       </div>
 </div>
-      <Rain/>
+      <Rain weather={this.state.weather_data}/>
     </div>;
   }
 }
