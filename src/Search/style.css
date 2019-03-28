@@ -3,7 +3,6 @@
   width: 30%;
   height: 100vh;
   top: 0;
-  height: 100vh;
   overflow-x: hidden;
   transition: 0.8s ease-out;
   display: flex;
@@ -36,7 +35,7 @@ margin-bottom: 3rem;
 }
 
 .input::placeholder {
-  color: black !important;
+  /* color: black !important; */
 }
 
 .label {
