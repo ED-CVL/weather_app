@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   async getWeatherDataCity(search_city, search_country) {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
     .then((response) => {
       if(!response.ok){
         throw new Error(`Request rejected with status ${response.status}`)
@@ -57,7 +57,7 @@ class App extends Component {
       }).catch((e)=> console.log(e));
       // 5 day forecast  api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
 
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${search_city},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
     .then(response => response.json())
     .then((data) => {
         this.setState({
@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   async getWeatherDataZip(search_zip, search_country) {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${search_zip},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${search_zip},${search_country}&units=imperial&APPID=a9b642fb3a8d9dfcdcba6d7fd229a545`)
     .then(response => response.json())
     .then((data) => {
         this.setState({
