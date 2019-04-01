@@ -2,6 +2,10 @@
   "name": "weather_app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "yarn": "1.15.2",
+    "node": "11.11.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
