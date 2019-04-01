@@ -53,6 +53,19 @@ class Search extends Component {
     // this.props.toggle();
 
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.expanded !== this.props.expanded){
+      this.setState(prevState => ({
+        expanded: !prevState.expanded
+      }));
+    }
+  }
+
+  // resizeHeight(){
+  //   this.setState(prevState => ({
+  //     expanded: !prevState.expanded
+  //   }));
+  // }
 
 
   render() {

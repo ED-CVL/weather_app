@@ -33,11 +33,6 @@ class Nav extends Component {
       <a className="navbar-item">
         Home
       </a>
-
-      <a className="navbar-item">
-        About
-      </a>
-
       <div className="navbar-item has-dropdown is-hoverable">
         <a className="navbar-link">
           Top Cities

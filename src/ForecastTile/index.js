@@ -95,6 +95,7 @@ class ForecastTile extends Component {
     this.setState(prevState => ({
       expanded: !prevState.expanded
     }));
+    this.props.toggleSearchExpand();
   }
 
   render() {
